@@ -9,6 +9,7 @@ import SidebarResponsive from './Partials/SidebarResponsive';
 export default function AppLayout({ children, title }) {
     const [sidebarOpen, setSidebarOpen] = useState(false);
     const auth = usePage().props.auth.user;
+    const { url } = usePage();
     // console.log(auth);
 
     return (
@@ -61,7 +62,7 @@ export default function AppLayout({ children, title }) {
                                         </div>
                                     </Transition.Child>
                                     {/* Sidebar Responsive */}
-                                    <SidebarResponsive auth={auth} />
+                                    <SidebarResponsive auth={auth} url={url} />
                                 </Dialog.Panel>
                             </Transition.Child>
                         </div>
@@ -79,7 +80,7 @@ export default function AppLayout({ children, title }) {
                             </Link>
                         </div>
                         {/* Sidebar */}
-                        <Sidebar auth={auth} />
+                        <Sidebar auth={auth} url={url} />
                     </div>
                 </div>
 
