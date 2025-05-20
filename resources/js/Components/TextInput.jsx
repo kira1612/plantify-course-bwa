@@ -8,6 +8,11 @@ export default forwardRef(function TextInput(
 
     useImperativeHandle(ref, () => ({
         focus: () => localRef.current?.focus(),
+        reset: () => {
+            if (localRef.current) {
+                localRef.current.value = '';
+            }
+        },
     }));
 
     useEffect(() => {
