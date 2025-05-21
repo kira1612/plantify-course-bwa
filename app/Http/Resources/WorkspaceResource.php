@@ -21,8 +21,7 @@ class WorkspaceResource extends JsonResource
             'slug' => $this->slug,
             'visibility' => $this->visibility?->value,
             // 'visibility' => $this->visibility ? $this->visibility->value : null,
-            'cover' => Storage::url(ltrim($this->cover, '/')),
-            // 'cover' => Storage::url($this->cover),
+            'cover' => Storage::url($this->cover),
             // 'cover' => $this->cover ? Storage::url($this->cover) : null,
             'logo' => Storage::url($this->logo),
         ];
