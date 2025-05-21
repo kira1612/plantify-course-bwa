@@ -4,8 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Enums\WorkspaceVisibility;
 use App\Http\Requests\WorkspaceRequest;
+use App\Http\Resources\WorkspaceResource;
+use App\Models\Workspace;
 use App\Traits\HasFile;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+use Inertia\Inertia;
 use Inertia\Response;
 
 class WorkspaceController extends Controller
@@ -23,10 +28,10 @@ class WorkspaceController extends Controller
             'visibilities' => WorkspaceVisibility::options(),
         ]);
     }
-    public function store(WorkspaceRequest $request)
+    public function store(WorkspaceRequest $request): RedirectResponse
     {
         // dd($request->all());
-        $request->user()->workspaces()->create([
+        $workspace = $request->user()->workspaces()->create([
             'name' => $name = $request->name,
             'slug' => str()->slug($name . str()->uuid(10)),
             'cover' => $this->upload_file($request, 'cover', 'workspaces/cover'),
@@ -35,6 +40,22 @@ class WorkspaceController extends Controller
         ]);
         // untuk flash message
         flashMessage('Workspace information saved successfully');
-        return back();
+        return to_route('workspaces.show', $workspace);
+    }
+    public function show(Workspace $workspace): Response
+    {
+        // dd($workspace); // <- Cek apakah ini berisi data valid
+        return inertia('Workspaces/Show', [
+            'workspace' => fn() => new WorkspaceResource($workspace),
+        ]);
+        // $workspaceData = [
+        //     'id' => $workspace->id,
+        //     'name' => $workspace->name,
+        //     'cover' => $workspace->cover ? Storage::url($workspace->cover) : null,
+        // ];
+        // dd($workspaceData); // Cek isi data sebelum dikirim
+        // return inertia('Workspaces/Show', [
+        //     'workspace' => $workspaceData,
+        // ]);
     }
 }
