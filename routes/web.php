@@ -27,8 +27,8 @@ Route::controller(WorkspaceController::class)->group(function () {
     Route::get('workspaces/create', 'create')->name('workspaces.create');
     Route::post('workspaces/store', 'store')->name('workspaces.store');
     Route::get('workspaces/p/{workspace:slug}', 'show')->name('workspaces.show');
-    Route::get('workspaces/edit/{workspaces:slug}', 'edit')->name('workspaces.edit');
-    Route::put('workspaces/edit/{workspaces:slug}', 'update')->name('workspaces.update');
+    Route::get('workspaces/edit/{workspace:slug}', 'edit')->name('workspaces.edit');
+    Route::put('workspaces/edit/{workspace:slug}', 'update')->name('workspaces.update');
     Route::delete('workspaces/destroy/{workspaces:slug}', 'destroy')->name('workspaces.destroy');
 });
 

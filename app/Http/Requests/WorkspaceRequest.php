@@ -32,11 +32,11 @@ class WorkspaceRequest extends FormRequest
             ],
             'cover' => [
                 Rule::when($this->routeIs('workspaces.store'), ['required', 'mimes:png,jpg', 'max:2048']),
-                Rule::when($this->routeIs('workspaces.update'), ['required', 'mimes:png,jpg', 'max:2048']),
+                Rule::when($this->routeIs('workspaces.update'), ['nullable', 'mimes:png,jpg', 'max:2048']),
             ],
             'logo' => [
                 Rule::when($this->routeIs('workspaces.store'), ['required', 'mimes:png,jpg', 'max:2048']),
-                Rule::when($this->routeIs('workspaces.update'), ['required', 'mimes:png,jpg', 'max:2048']),
+                Rule::when($this->routeIs('workspaces.update'), ['nullable', 'mimes:png,jpg', 'max:2048']),
             ],
             'visibility' => [
                 'nullable',
