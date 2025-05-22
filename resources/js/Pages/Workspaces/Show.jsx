@@ -20,8 +20,7 @@ export default function Show({ ...props }) {
                             alt={workspace.name}
                         />
                     </div>
-
-                    <div className="sm-flex items-center sm:min-w-0 sm:flex-1 sm:justify-end sm:space-x-6 sm:pb-1">
+                    <div className="items-center sm:flex sm:min-w-0 sm:flex-1 sm:justify-end sm:space-x-6 sm:pb-1">
                         <div className="mt-6 min-w-0 flex-1">
                             <CardTitle className="text-4xl leading-relaxed tracking-tighter">
                                 {workspace.name}
