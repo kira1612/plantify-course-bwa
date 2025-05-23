@@ -41,11 +41,15 @@ class Card extends Model
     {
         return $this->belongsTo(Workspace::class);
     }
+    public function attachments(): HasMany
+    {
+        return $this->hasMany(Attachment::class);
+    }
     public function tasks(): HasMany
     {
         return $this->hasMany(Task::class);
     }
-    public function member(): MorphMany
+    public function members(): MorphMany
     {
         return $this->morphMany(Member::class, 'memberable');
     }

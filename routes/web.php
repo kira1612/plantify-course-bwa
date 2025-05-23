@@ -3,6 +3,7 @@
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\WorkspaceController;
+use App\Models\Workspace;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -30,6 +31,10 @@ Route::controller(WorkspaceController::class)->group(function () {
     Route::get('workspaces/edit/{workspace:slug}', 'edit')->name('workspaces.edit');
     Route::put('workspaces/edit/{workspace:slug}', 'update')->name('workspaces.update');
     Route::delete('workspaces/destroy/{workspaces:slug}', 'destroy')->name('workspaces.destroy');
+
+
+    Route::post('workspaces/member/{workspace:slug}/store', 'member_store')->name('workspaces.member_store');
+    Route::delete('workspaces/member/{workspace:slug}/destroy', 'member_destroy')->name('workspaces.member_destroy');
 });
 
 Route::get('testing', fn() => Inertia::render('Testing'));
