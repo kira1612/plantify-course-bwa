@@ -34,7 +34,7 @@ Route::controller(WorkspaceController::class)->group(function () {
 
 
     Route::post('workspaces/member/{workspace:slug}/store', 'member_store')->name('workspaces.member_store');
-    Route::delete('workspaces/member/{workspace:slug}/destroy', 'member_destroy')->name('workspaces.member_destroy');
+    Route::delete('workspaces/member/{workspace}/destroy/{member}', 'member_destroy')->name('workspaces.member_destroy');
 });
 
 Route::get('testing', fn() => Inertia::render('Testing'));
