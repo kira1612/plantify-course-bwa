@@ -8,7 +8,7 @@ export function GetStatusBadge({ status }) {
     switch (status) {
         case TODO:
             badge = 'bg-red-500 hover:bg-red-600';
-            text = URGENT;
+            text = TODO;
             break;
         case INPROGRESS:
             badge = 'bg-yellow-500 hover:bg-yellow-600';
