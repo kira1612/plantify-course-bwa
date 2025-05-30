@@ -5,6 +5,7 @@ use App\Http\Controllers\CardController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\MemberCardController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\TaskController;
 use App\Http\Controllers\WorkspaceController;
 use App\Models\Workspace;
 use Illuminate\Foundation\Application;
@@ -58,6 +59,9 @@ Route::controller(AttachmentController::class)->group(function () {
     Route::post('cards/attachment/{card}/create', 'store')->name('attachments.store');
     Route::delete('cards/attachment/{card}/destroy/{attachment}', 'destroy')->name('attachments.destroy');
 })->middleware('auth');
+Route::controller(TaskController::class)->group(function () {
+    Route::post('cards/tasks/{card}/create', 'store')->name('tasks.store');
+})->middleware(('auth'));
 
 Route::get('testing', fn() => Inertia::render('Testing'));
 Route::middleware('auth')->group(function () {
