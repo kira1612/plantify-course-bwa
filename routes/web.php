@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AttachmentController;
 use App\Http\Controllers\CardController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\MemberCardController;
@@ -50,8 +51,11 @@ Route::controller(CardController::class)->group(function () {
 })->middleware('auth');
 
 Route::controller(MemberCardController::class)->group(function () {
-    Route::post('cards/member/{card}/store', 'store')->name('member_card.store');
+    Route::post('cards/member/{card}/create', 'store')->name('member_card.store');
     Route::delete('cards/member/{card}/destroy/{member}', 'destroy')->name('member_card.destroy');
+})->middleware('auth');
+Route::controller(AttachmentController::class)->group(function () {
+    Route::post('cards/attachment/{card}/create', 'store')->name('attachments.store');
 })->middleware('auth');
 
 Route::get('testing', fn() => Inertia::render('Testing'));

@@ -60,7 +60,7 @@ class User extends Authenticatable
     {
         return $this->hasMany(Member::class);
     }
-    public function attachments(): HasMany
+    public function attachment(): HasMany
     {
         return $this->hasMany(Attachment::class);
     }
