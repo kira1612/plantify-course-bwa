@@ -61,6 +61,7 @@ Route::controller(AttachmentController::class)->group(function () {
 })->middleware('auth');
 Route::controller(TaskController::class)->group(function () {
     Route::post('cards/tasks/{card}/create', 'store')->name('tasks.store');
+    Route::delete('cards/tasks/{card}/destroy/{task}', 'destroy')->name('tasks.destroy');
 })->middleware(('auth'));
 
 Route::get('testing', fn() => Inertia::render('Testing'));
