@@ -29,4 +29,21 @@ class TaskController extends Controller
 
         return back();
     }
+    public function item(Card $card, Task $task, Request $request): RedirectResponse
+    {
+        $request->validate([
+            'item' => [
+                'required',
+                'string',
+                'max:255',
+            ],
+        ]);
+        $task->children()->create([
+            'card_id' => $card->id,
+            'user_id' => $request->user()->id,
+            'title' => $request->item,
+        ]);
+        flashMessage("Success added item to $task->title");
+        return back();
+    }
 }
