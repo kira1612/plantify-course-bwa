@@ -4,6 +4,7 @@ use App\Http\Controllers\AttachmentController;
 use App\Http\Controllers\CardController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\MemberCardController;
+use App\Http\Controllers\MyTaskController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TaskController;
 use App\Http\Controllers\WorkspaceController;
@@ -65,6 +66,8 @@ Route::controller(TaskController::class)->group(function () {
     Route::put('cards/tasks/{card}/{task}/completed', 'completed')->name('tasks.completed');
     Route::delete('cards/tasks/{card}/destroy/{task}', 'destroy')->name('tasks.destroy');
 })->middleware(('auth'));
+
+Route::get('my-tasks', MyTaskController::class)->name('mytasks.index');
 
 Route::get('testing', fn() => Inertia::render('Testing'));
 Route::middleware('auth')->group(function () {

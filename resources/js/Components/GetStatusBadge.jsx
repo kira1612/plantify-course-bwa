@@ -2,7 +2,7 @@ import { Badge } from '@/Components/ui/badge';
 import { STATUS } from '@/lib/utils';
 
 export function GetStatusBadge({ status }) {
-    const { TODO, INPROGRESS, ONREVIEW, DONE, UNKNOWN } = STATUS;
+    const { TODO, INPROGRESS, ONREVIEW, DONE, UNKNOWN, MEDIUM } = STATUS;
     let badge, text;
 
     switch (status) {
